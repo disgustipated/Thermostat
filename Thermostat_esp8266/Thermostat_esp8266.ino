@@ -22,6 +22,7 @@ const String SOFTWARE_VERSION = "1.0 Bedroom Thermostat";
 const char* DEVICENAME = "BedroomThermostat"; 
 //pins
 const int WIFI_INFO_LED_PIN = 2;
+const int RED_DATA_PIN = 0;
 const int WIFI_RESET_PIN = 14;
 const long CHECK_WIFI_INTERVAL = 30000;
 const long CHECK_MQTT_INTERVAL = 30000;
@@ -43,6 +44,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(WIFI_RESET_PIN,INPUT_PULLUP);
   pinMode(WIFI_INFO_LED_PIN,OUTPUT);
+  pinMode(RED_DATA_PIN,OUTPUT);
   //wifiManager.setSTAStaticIPConfig(IPAddress(6,13,0,218), IPAddress(6,13,0,1), IPAddress(255,255,255,0)); //Remove this for DHCP
   wifiManager.autoConnect("ESPSetup", "Setup1");
   client.setServer(mqtt_server, 1883);

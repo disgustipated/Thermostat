@@ -22,10 +22,11 @@ void reconnect() {
   int reconnectCount = 0;
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    Serial.println("Attempting MQTT connection...");
     if (client.connect(DEVICENAME, mqtt_user, mqtt_password)) {
       Serial.println("connected");
     } else {
+      MQTTError();
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
