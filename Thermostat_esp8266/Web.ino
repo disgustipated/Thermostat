@@ -30,7 +30,7 @@ void handleRoot() {
            "<html>\
             <head>\
               <meta http-equiv='refresh' content='65'/>\
-              <title>Garden ESP8266</title>\
+              <title>%s %s ESP8266</title>\
               <style>\
                 body { background-color: #cccccc; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }\
               </style>\
@@ -44,7 +44,7 @@ void handleRoot() {
               </script>\
             </head>\
             <body>\
-              <h1>Garden ESP8266</h1>\
+              <h1>Device: %s Version:%s ESP8266</h1>\
               <p>Current Time: %s</p>\
               <p>Uptime: %02d:%02d:%02d</p>\
               <p>Temp: %f</p>\
@@ -53,7 +53,7 @@ void handleRoot() {
               <button onclick=\"activatePump()\">Run Pump</button>\
             </body>\
            </html>",
-           currentip.c_str(),statusPagePort, currentTime.c_str(), hr, min % 60, sec % 60, sensorDataTemp, sensorDataHumd, sensorDataIndx
+           DEVICENAME,SOFTWARE_VERSION,currentip.c_str(),statusPagePort,DEVICENAME,SOFTWARE_VERSION,currentTime.c_str(), hr, min % 60, sec % 60, sensorDataTemp, sensorDataHumd, sensorDataIndx
            );
   server.send(200, "text/html", temp);
   digitalWrite(WIFI_INFO_LED_PIN, 0);

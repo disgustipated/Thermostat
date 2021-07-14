@@ -18,7 +18,7 @@
 #define topic "home/bedroom/temperature"
 
 const int  statusPagePort = 8266;
-const String SOFTWARE_VERSION = "1.0 Bedroom Thermostat";
+const char* SOFTWARE_VERSION = "1.0 Bedroom Thermostat";
 const char* DEVICENAME = "BedroomThermostat"; 
 //pins
 const int WIFI_INFO_LED_PIN = 2;
