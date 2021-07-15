@@ -27,7 +27,7 @@ void checkSensors(){
     //serializeJsonPretty(mqttMsg, Serial);
     char buffer[512];
     size_t n = serializeJson(mqttMsg, buffer);
-    SensorSend();
+    dataSend();
     Serial.println(buffer);
     client.publish(topic, buffer, n);
     } else {

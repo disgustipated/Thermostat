@@ -45,6 +45,7 @@ void setup() {
   pinMode(WIFI_RESET_PIN,INPUT_PULLUP);
   pinMode(WIFI_INFO_LED_PIN,OUTPUT);
   pinMode(RED_DATA_PIN,OUTPUT);
+  digitalWrite(RED_DATA_PIN,HIGH);
   //wifiManager.setSTAStaticIPConfig(IPAddress(6,13,0,218), IPAddress(6,13,0,1), IPAddress(255,255,255,0)); //Remove this for DHCP
   wifiManager.autoConnect("ESPSetup", "Setup1");
   client.setServer(mqtt_server, 1883);
@@ -64,9 +65,7 @@ void loop() {
   }
   //checking if mqtt is connected
   checkMQTT();
-  if (!client.connected()) {
-    reconnect();
-  }
+
   client.loop();
   checkSensors();
   server.handleClient();
