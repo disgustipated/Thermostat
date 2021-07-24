@@ -36,3 +36,18 @@ void reconnect() {
     }
   }
 }
+
+void publishMessage(String mqtttopic, JsonObject message, bool webResponse=false){
+  checkMQTT();
+  char buffer[512];
+  size_t n = serializeJson(message, buffer);
+  Serial.println(buffer);
+  if(client.publish(toCharArray(mqtttopic), toCharArray(buffer), (size_t)n)){
+    dataSend();
+    if(webResponse){
+      server.send(200,"text/plain",buffer);
+    }
+  } else {
+    MQTTError();
+  }
+}
